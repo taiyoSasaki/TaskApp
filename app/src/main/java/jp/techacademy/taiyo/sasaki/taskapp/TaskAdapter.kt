@@ -17,11 +17,9 @@ class TaskAdapter(context: Context): BaseAdapter() {
         this.mLayInflater = LayoutInflater.from(context)
     }
 
-
     override fun getCount(): Int {
         return mTaskList.size
     }
-
 
     override fun getItem(position: Int): Any {
         return mTaskList[position]
@@ -29,6 +27,10 @@ class TaskAdapter(context: Context): BaseAdapter() {
 
     override fun getItemId(position: Int): Long {
         return mTaskList[position].id.toLong()
+    }
+
+    fun getItemCategry(position: Int): String{
+        return  mTaskList[position].category
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

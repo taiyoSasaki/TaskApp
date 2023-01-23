@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         mRealm = Realm.getDefaultInstance()
         mRealm.addChangeListener(mRealmListener)
 
-
         //ListViewの設定
         mTaskAdapter = TaskAdapter(this)
 
@@ -90,6 +89,28 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+
+        //検索欄の実装
+        search_button.setOnClickListener {
+            var search = search_edit_text.text.toString()
+
+            //何か入力されている場合
+            if (search != "") {
+                var searchResults = arrayListOf<Task>()
+                for (i in 0..mTaskAdapter.getCount() - 1) {
+                    var category = mTaskAdapter.getItemCategry(i)
+                    if (category == search) {
+                        searchResults.add(mTaskAdapter.getItem(i) as Task)
+                    }
+                }
+                mTaskAdapter.mTaskList = searchResults
+
+                listView1.adapter = mTaskAdapter
+                mTaskAdapter.notifyDataSetChanged()
+
+            }
+        }
+
         reloadListView()
     }
 
