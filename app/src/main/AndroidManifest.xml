@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.techacademy.taiyo.sasaki.taskapp">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <application
         android:name=".TaskApp"
         android:allowBackup="true"
@@ -31,6 +33,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jp.techacademy.taiyo.sasaki.taskapp.MainActivity" />
             </activity>
+
+        <receiver android:name=".TaskAlarmReceiver"/>
 
     </application>
 
